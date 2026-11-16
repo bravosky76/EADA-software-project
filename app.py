@@ -5,6 +5,27 @@ import joblib
 import pandas as pd
 import streamlit as st
 
+# ---------- Visual style: animated Barcelona sunset background ----------
+st.markdown("""
+<style>
+.stApp {background: linear-gradient(-45deg, #ff4d6d, #ff8fab, #ffd166, #e63946, #ff9e00); background-size: 400% 400%; animation: sunset 15s ease infinite;}
+@keyframes sunset {0% {background-position: 0% 50%;} 50% {background-position: 100% 50%;} 100% {background-position: 0% 50%;}}
+.stApp::before, .stApp::after {content: ""; position: fixed; width: 420px; height: 420px; border-radius: 50%; filter: blur(90px); opacity: 0.55; z-index: 0; pointer-events: none;}
+.stApp::before {background: #ffd166; top: -100px; left: -100px; animation: float1 18s ease-in-out infinite;}
+.stApp::after {background: #ff006e; bottom: -120px; right: -120px; animation: float2 22s ease-in-out infinite;}
+@keyframes float1 {0%, 100% {transform: translate(0, 0);} 50% {transform: translate(60vw, 40vh);}}
+@keyframes float2 {0%, 100% {transform: translate(0, 0);} 50% {transform: translate(-55vw, -45vh);}}
+[data-testid="stHeader"] {background: transparent;}
+.block-container {position: relative; z-index: 1;}
+h1 {color: #ffffff !important; font-weight: 800 !important; text-shadow: 0 4px 18px rgba(0, 0, 0, 0.25);}
+.block-container p {color: #ffffff;}
+[data-testid="stForm"] {background: rgba(20, 10, 30, 0.45); backdrop-filter: blur(14px); border: 1px solid rgba(255, 255, 255, 0.35); border-radius: 22px; padding: 1.5rem; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.25);}
+[data-testid="stForm"] label p {color: #ffffff !important; font-weight: 600;}
+[data-testid="stFormSubmitButton"] button {background: linear-gradient(90deg, #ff006e, #ff9e00); color: #ffffff; border: none; border-radius: 999px; padding: 0.6rem 2rem; font-weight: 700; transition: transform 0.15s;}
+[data-testid="stFormSubmitButton"] button:hover {transform: scale(1.05);}
+</style>
+""", unsafe_allow_html=True)
+
 
 st.title("Rip-off Radar BCN")
 st.write("Compare an offered nightly price with the model's estimate.")
